@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main-style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="assets/Carsell Logo.png" alt="Logo" class="nav-logo">
+    <h1 class="logo-title">CarSell</h1>
+  </div>
+  <div class="nav-right">
+    <a href="main.html" class="nav-link">Home</a>
+    <a href="listing.html" class="nav-link">Cars</a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+
+<!-- Account Dropdown -->
+<div class="account-dropdown">
+  <svg class="account-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="grey" viewBox="0 0 24 24" onclick="toggleDropdown()">
+    <path d="M12 12c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4zm0-2c-1.66 0-3-1.34-3-3s1.34-3 
+    3-3 3 1.34 3 3-1.34 3-3 3z"/>
+  </svg>
+  <div class="dropdown-menu hidden" id="accountDropdown">
+    <p>Hi <span id="user-email">Loading...</span></p>
+    <a href="php/logout.php" class="logout-btn">Log Out</a>
+  </div>
+</div>
+</nav>
+
+ <!-- Hero Section Wrapper -->
+<section class="hero-section">
+  <main class="main-content">
+    <div class="content-left">
+      <h1>Buy a Car of Your Dreams!</h1>
+      <p>Allow us to guide you through your selection of cars.</p>
+    </div>
+
+    <div class="content-right">
+      <form class="search-form">
+        <input type="text" placeholder="Search by car name" class="form-input" />
+
+        <select name="manufacturer" id="manufacturer" class="form-input">
+          <option value="">Select Manufacturer</option>
+        </select>
+
+        <select name="model" id="model" class="form-input">
+          <option value="">Model</option>
+        </select>
+
+        <select name="year" id="year" class="form-input">
+          <option value="">Select Year</option>
+        </select>
+
+        <select name="mileage" id="mileage" class="form-input">
+          <option value="">Mileage</option>
+        </select>
+
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </div>
+  </main>
+</section>
+
+
+  <!-- Featured Cars Section -->
+  <section id="cars" class="featured-section">
+  <h2><span class="featured-title">Featured</span> Cars</h2>
+  <p class="featured-subtitle">Explore our top recommendations for you.</p>
+
+  <div class="featured-cards" id="featured-container">
+    <!-- JS will insert cards here -->
+  </div>
+</section>
+
+<!-- Newly Listed Cars Section -->
+<section class="featured-section" id="newly-listed">
+  <h2 class="featured-title">Newly Listed <span style="color:#333;">Cars</span></h2>
+  <p class="featured-subtitle">Check out the latest additions to our inventory.</p>
+  <div class="featured-cards" id="newly-listed-container">
+    <!-- JS will insert cards here -->
+  </div>
+</section>
+
+<!-- Car Details Modal (Hidden by Default) -->
+<div id="carModalOverlay" class="modal-overlay hidden">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+
+    <div class="modal-body">
+      <!-- Left: Image -->
+      <div class="modal-left">
+        <img id="modalCarImage" src="" alt="Car Image">
+      </div>
+
+      <!-- Right: Details -->
+      <div class="modal-right">
+        <h2 id="modalCarName">Car Name</h2>
+        <p><strong>Manufacturer:</strong> <span id="modalManufacturer"></span></p>
+        <p><strong>Model:</strong> <span id="modalModel"></span></p>
+        <p><strong>Year:</strong> <span id="modalYear"></span></p>
+        <p><strong>Mileage:</strong> <span id="modalMileage"></span> km</p>
+        <p><strong>Price:</strong> RM <span id="modalPrice"></span></p>
+
+        <textarea id="inquiryMessage" class="form-input" rows="3" placeholder="Optional: Add a message..." style="width: 100%; height: 100px; resize: none; margin-top: 1rem;"></textarea>
+
+        <button id="inquireBtn" class="inquire-btn">Inquire</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="js/car-modal.js"></script>
+  <script src="js/main-script.js"></script>
+</body>
+</html>

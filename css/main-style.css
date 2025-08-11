@@ -1,0 +1,302 @@
+/* =======  GLOBAL TOKENS  ======= */
+:root {
+  --primary: #0047AB;   /* deep blue */
+  --accent : #FF5733;   /* orange-red */
+  --text   : #333333;   /* default dark text */
+  --bg     : #f9f9f9;   /* page background */
+  --shadow : 0 4px 12px rgba(0,0,0,.12);
+  --radius : 10px;
+  --gap    : 2rem;
+  --font   : 'Montserrat', sans-serif;
+}
+
+/* =======  RESET / BASE  ======= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =======  NAVBAR  ======= */
+.navbar {
+  background: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.nav-left        { display: flex; align-items: center; }
+.nav-logo        { height: 60px; }
+.logo-title      { color: var(--primary); font-weight: 700; margin-left: .5rem; }
+
+.nav-right       { display: flex; align-items: center; gap: 1rem; }
+.nav-link        { color: var(--primary); font-weight: 600; text-decoration: none; }
+.nav-link:hover  { text-decoration: underline; }
+
+.search-input {
+  padding: 6px 10px;
+  border: 1px solid var(--primary);
+  border-radius: 4px;
+}
+
+/* =======  ACCOUNT DROPDOWN  ======= */
+.account-dropdown { position: relative; cursor: pointer; }
+.dropdown-menu {
+  position: absolute; top: 30px; right: 0;
+  width: 200px; padding: 1rem;
+  background: #fff; color: var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 1000; text-align: left;
+}
+.dropdown-menu p      { margin-bottom: .5rem; font-weight: 700; }
+.dropdown-menu .logout-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: .9rem;
+  text-decoration: none;
+}
+.hidden { display: none; }
+
+/* =======  FEATURED CARS  ======= */
+.featured-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-title     { color: var(--accent); font-weight: 700; }
+.featured-subtitle  { margin-top: .5rem; font-size: .95rem; color: #555; }
+
+/* Grid automatically flows cards – wide screens show 3 columns (≈3×4 grid) */
+.featured-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* exactly 3 columns */
+  gap: var(--gap);
+  margin-top: var(--gap);
+}
+
+
+.car-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .2s, box-shadow .2s;
+}
+.car-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+}
+
+.car-image  { width: 100%; height: 150px; object-fit: cover; }
+.car-details { padding: 1rem; }
+.car-details h3 { margin-bottom: .4rem; color: var(--primary); }
+.car-details p  { font-size: .9rem; color: var(--text); }
+
+.pagination {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+.page-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.page-btn:hover { background: #003a91; }
+.page-btn.active {
+  background-color: var(--accent);
+  font-weight: bold;
+}
+
+/* =======  RESPONSIVE TWEAKS  ======= */
+@media (max-width: 992px) {
+  .featured-cards {
+    grid-template-columns: repeat(2, 1fr); /* tablet: 2 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-cards {
+    grid-template-columns: 1fr; /* mobile: 1 column */
+  }
+}
+
+/* ======= MAIN CONTENT LAYOUT ======= */
+.hero-section {
+  background-color: #003a91;
+  padding: 4rem 0;
+  color: white;
+}
+
+.main-content {
+  background-color: #003a91; /* Dark blue background for the top section */
+  color: white;              /* Ensure text inside is readable */
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  border-radius: 10px; /* Optional: give it some curve */
+}
+
+.content-left {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.content-left h1 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.content-left p {
+  font-size: 1.1rem;
+  color: white;
+}
+
+/* SEARCH CARD STYLE */
+.content-right {
+  background-color: #fff;
+  color: var(--primary);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 320px;
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-family: var(--font);
+}
+
+.search-btn {
+  background-color: var(--accent);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.search-btn:hover {
+  background-color: #e64a2e;
+}
+
+/* ======= RESPONSIVE STACKING ======= */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .content-left,
+  .content-right {
+    max-width: 100%;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 95%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.modal-left img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+.modal-right {
+  flex: 1;
+  min-width: 250px;
+}
+
+.inquire-btn {
+  margin-top: 1.5rem;
+  background-color: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.inquire-btn:hover {
+  background-color: #e64a2e;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.hidden {
+  display: none;
+}

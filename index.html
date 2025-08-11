@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login/Signup Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- Shared Logo -->
+    <div class="logo-wrapper">
+      <img src="assets/Carsell Logo White.png" alt="Carsell Logo" class="logo-img">
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="form-box">
+      <h2>Login</h2>
+      <p id="login-error" class="error"></p>
+      <form action="php/login.php" method="POST">
+        <input type="email" id="login-email" name="email" placeholder="Enter your email" required />
+        <input type="password" name="password" id="login-password" placeholder="Enter your password" required />
+
+        <div class="options-row">
+          <a href="forgot.html" class="forgot">Forgot password?</a>
+          <span class="show-pass" onclick="togglePasswords(['login-password'], this)">Show password</span>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <p class="switch">Don't have an account? 
+        <a href="#" onclick="showForm('signup')">Sign up</a>
+      </p>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-form" class="form-box hidden">
+      <h2>Sign Up</h2>
+      <p id="signup-error" class="error"></p>
+      <form action="php/signup.php" method="POST" onsubmit="return validateSignup()">
+        <input type="email" name="email" id="signup-email" placeholder="Enter your email" required />
+        <input type="password" name="password" id="signup-password" placeholder="Create a password" required />
+        <input type="password" name="confirm" id="signup-confirm" placeholder="Confirm your password" required />
+
+        <div class="options-row right-align">
+          <span class="show-pass" onclick="togglePasswords(['signup-password', 'signup-confirm'], this)">Show password</span>
+        </div>
+
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+
+      <p class="switch">Already have an account? 
+        <a href="#" onclick="showForm('login')">Login</a>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>This is a group project from <strong>ItJustGroupMan</strong> Web Programming Section 09</p>
+    </footer>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

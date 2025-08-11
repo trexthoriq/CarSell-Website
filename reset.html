@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reset Password</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="form-box">
+      <div class="logo-wrapper">
+        <img src="assets/Carsell Logo.png" alt="Carsell Logo" class="logo-img">
+      </div>
+
+      <h2>Reset Password</h2>
+
+      <!-- Info will be inserted here via JS -->
+      <form action="php/reset.php" method="POST" onsubmit="return validateResetForm()">
+        <input type="hidden" name="email" id="user-email" />
+        <div class="input-group">
+          <!-- New Password -->
+          <input type="password" name="new_password" id="new-password" placeholder="New password" required />
+
+          <!-- Confirm Password -->
+          <input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm password" required />
+
+          <!-- Show password like in index.html -->
+          <div class="options-row right-align">
+            <span class="show-pass" onclick="togglePasswords(['new-password', 'confirm-password'], this)">Show password</span>
+          </div>
+        <button type="submit" class="btn">Reset Password</button>
+      </form>
+
+      <p class="switch">Back to <a href="index.html">Login</a></p>
+    </div>
+
+    <footer>
+      <p>This is a group project from <strong>ItJustGroupMan</strong> Web Programming Section 09</p>
+    </footer>
+  </div>
+
+<script>
+  // Show email and set hidden input
+  window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+
+    if (email) {
+      const header = document.querySelector("h2");
+      const info = document.createElement("p");
+      info.style.textAlign = "center";
+      info.style.marginBottom = "1rem";
+      info.innerHTML = `Resetting password for <strong>${email}</strong>`;
+      header.insertAdjacentElement("afterend", info);
+
+      // Set value to hidden input
+      document.getElementById("user-email").value = email;
+    }
+  });
+
+  //Show Password
+  function togglePasswords(inputIds, toggleElement) {
+    const isHidden = document.getElementById(inputIds[0]).type === "password";
+
+    inputIds.forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+        input.type = isHidden ? "text" : "password";
+      }
+    });
+
+    toggleElement.textContent = isHidden ? "Hide password" : "Show password";
+  }
+
+  function validateResetForm() {
+    const newPass = document.getElementById("new-password");
+    const confirmPass = document.getElementById("confirm-password");
+
+    let valid = true;
+
+    if (!newPass.value.trim()) {
+      newPass.classList.add("error-border");
+      newPass.placeholder = "Must fill in password";
+      valid = false;
+    } else {
+      newPass.classList.remove("error-border");
+      newPass.placeholder = "New password";
+    }
+
+    if (!confirmPass.value.trim()) {
+      confirmPass.classList.add("error-border");
+      confirmPass.placeholder = "Must confirm password";
+      valid = false;
+    } else if (newPass.value !== confirmPass.value) {
+      confirmPass.classList.add("error-border");
+      confirmPass.value = "";
+      confirmPass.placeholder = "Passwords do not match";
+      valid = false;
+    } else {
+      confirmPass.classList.remove("error-border");
+      confirmPass.placeholder = "Confirm password";
+    }
+
+    return valid;
+  }
+</script>
+</body>
+</html>

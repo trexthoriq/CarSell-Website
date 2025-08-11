@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forgot Password</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="form-box">
+      <div class="logo-wrapper">
+        <img src="assets/Carsell Logo.png" alt="Carsell Logo" class="logo-img">
+      </div>
+
+      <h2>Forgot Password</h2>
+      <p class="error" id="forgot-email-error"></p>
+      
+      <!-- Real form that sends email to PHP -->
+      <form action="php/forgot.php" method="POST" onsubmit="return validateForgotEmail()">
+        <input type="email" name="email" id="forgot-email" placeholder="Enter your email" required />
+        <button type="submit" class="btn">Send Reset Link</button>
+      </form>
+
+      <p class="switch">Remembered your password? <a href="index.html">Login</a></p>
+    </div>
+
+    <footer>
+      <p>This is a group project from <strong>ItJustGroupMan</strong> Web Programming Section 09</p>
+    </footer>
+  </div>
+
+  <script>
+    function validateForgotEmail() {
+      const emailInput = document.getElementById("forgot-email");
+      const email = emailInput.value.trim();
+
+      if (!email) {
+        emailInput.classList.add("error-border");
+        emailInput.placeholder = "Must fill in email";
+        return false;
+      }
+
+      emailInput.classList.remove("error-border");
+      emailInput.placeholder = "Enter your email";
+      return true;
+    }
+  </script>
+</body>
+</html>

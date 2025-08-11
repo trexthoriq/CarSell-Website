@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/main-style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="assets/Carsell Logo.png" alt="Logo" class="nav-logo">
+      <h1 class="logo-title">CarSell</h1>
+    </div>
+    <div class="nav-right">
+      <a href="main.html" class="nav-link">Home</a>
+      <a href="listing.html" class="nav-link">Cars</a>
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+
+            <!-- Account Dropdown -->
+      <div class="account-dropdown">
+        <svg class="account-icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="grey" viewBox="0 0 24 24" onclick="toggleDropdown()">
+          <path d="M12 12c2.67 0 8 1.34 8 4v2H4v-2c0-2.66 5.33-4 8-4zm0-2c-1.66 0-3-1.34-3-3s1.34-3 
+          3-3 3 1.34 3 3-1.34 3-3 3z"/>
+        </svg>
+        <div class="dropdown-menu hidden" id="accountDropdown">
+          <p>Hi <span id="user-email">Loading...</span></p>
+          <a href="php/logout.php" class="logout-btn">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== SECTION 1: Inquired Cars ===== -->
+  <section class="featured-section">
+    <h2>Inquired Cars</h2>
+    <div class="featured-cards" id="inquired-cars-container">
+      <!-- Cards will be inserted here by JS -->
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: Add Listing Form ===== -->
+  <section class="featured-section">
+    <h2>Add New Listing</h2>
+    <form class="search-form" id="add-listing-form" enctype="multipart/form-data">
+      <input type="text" id="car-name" name="name" class="form-input" placeholder="Car Name" required />
+      <input type="text" id="manufacturer" name="manufacturer" class="form-input" placeholder="Manufacturer" required />
+      <input type="text" id="model" name="model" class="form-input" placeholder="Model" required />
+      <input type="number" id="year" name="year" class="form-input" placeholder="Year" required />
+      <input type="number" id="mileage" name="mileage" class="form-input" placeholder="Mileage (km)" required />
+      <input type="number" id="price" name="price" class="form-input" placeholder="Price (RM)" required />
+      <input type="file" id="image" name="image" class="form-input" accept="image/*" required />
+      <button type="submit" class="search-btn">Submit Listing</button>
+    </form>
+  </section>
+
+  <script src="js/dashboard-script.js"></script>
+  <script src="js/main-script.js"></script>
+
+</body>
+</html>
